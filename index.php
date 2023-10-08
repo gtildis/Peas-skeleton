@@ -126,7 +126,17 @@
     {
         global $COMPARISON_NUMBER_OF_CHROMOSOMES;
 
-        return count($arrayOfNumeric) === $COMPARISON_NUMBER_OF_CHROMOSOMES && count($arrayOfyOrG) === $COMPARISON_NUMBER_OF_CHROMOSOMES;
+        if (count($arrayOfNumeric) !== $COMPARISON_NUMBER_OF_CHROMOSOMES || count($arrayOfyOrG) !== $COMPARISON_NUMBER_OF_CHROMOSOMES) {
+            return false;
+        }
+
+        foreach ($arrayOfNumeric as $value) {
+            if ($value < 0 || $value > 100) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     if (count($argv) < 2) {
