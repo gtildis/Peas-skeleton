@@ -26,7 +26,7 @@ You have to run `php index.php display arg1 arg2 arg3 arg4`.
 Here's what each argument represents:
 
 - `arg1`, `arg2`, `arg3`, and `arg4`:
-  
+
 These arguments control different aspects of the pea's properties and should adhere to the property-specific value ranges.
 They may be "Y" or "g" for color or an integer ranging from 0 to 100 for sweetness.
 The only thing you need to have in mind is that you need to provide two arguments that are numeric and two that are 'Y' or 'g'.
@@ -49,7 +49,7 @@ You have to run `php index.php generate arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8`
 Here's what each argument represents:
 
 - `arg1`, `arg2`, `arg3`, and `arg4`:
- 
+
 These first four arguments are the first parent of the new pea.These arguments control different aspects of the pea's properties and should adhere to the property-specific value ranges.
 They may be "Y" or "g" for color or an integer ranging from 0 to 100 for sweetness.
 
@@ -59,17 +59,20 @@ These second four arguments are the second parent of the new pea. Similar to the
 
 E.g:
 
-+ parent1: Y g 42 66
-+ parent2: g 13 26 g
-- `php index.php generate Y g 42 66 g 13 26 g`
+- parent1: Y g 42 66
+- parent2: g 13 26 g
 
-+ parent1: 23 0 g Y
-+ parent2: 100 g 12 Y
-- `php index.php generate 23 0 g Y 100 g 12 Y`
-  
-+ parent1: 55 11 g Y
-+ parent2: 7 g 99 g
-- `php index.php generate 55 11 g Y 7 g 99 g`
-  
+* `php index.php generate Y g 42 66 g 13 26 g`
+
+- parent1: 23 0 g Y
+- parent2: 100 g 12 Y
+
+* `php index.php generate 23 0 g Y 100 g 12 Y`
+
+- parent1: 55 11 g Y
+- parent2: 7 g 99 g
+
+* `php index.php generate 55 11 g Y 7 g 99 g`
+
 The order of the arguments for each parent doesn't matter, only the fact that you need to provide
 two parents in a row and not mix their genes, as you can see in the example above.

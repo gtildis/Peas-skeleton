@@ -2,8 +2,7 @@
 
 include "./Pea.php";
 
-//constants
-$COMPARISON_NUMBER_OF_CHROMOSOMES = 2;
+// constants
 $NUMBER_OF_CHROMOSOMES = 4;
 
 
@@ -24,7 +23,7 @@ function displayPea($args)
     $colorGenes = [];
     $sweetness = [];
 
-    // divides the chromosomes based on type
+    // Divides the chromosomes based on type
     divideChromosomes($args, $colorGenes, $sweetness);
 
     // Creates new Pea with the divided genes 
@@ -45,8 +44,7 @@ function generatePea($args)
 {
     global $NUMBER_OF_CHROMOSOMES;
 
-
-    // Ensure we have exactly 8 arguments
+    // Ensure we have exactly 8 arguments, 4 for each parent.
     if (count($args) !== $NUMBER_OF_CHROMOSOMES * 2) {
         echo "Error: Invalid number of arguments. Please provide exactly eight hidden variables (four for each parent).\n";
         return;
@@ -66,22 +64,20 @@ function generatePea($args)
     divideChromosomes($firstArgs, $parentAColorGenes, $parentASweetness);
     divideChromosomes($secondArgs, $parentBColorGenes, $parentBSweetness);
 
-    // Create the parents 
+    // Create the parent peas
     $parentA = new Pea($parentAColorGenes, $parentASweetness);
     $parentB = new Pea($parentBColorGenes, $parentBSweetness);
 
     // Check if both parent A and parent B have the correct format
     if (!$parentA->isValid() || !$parentB->isValid()) {
-
         echo "Error: Each parent must have two numeric values from 0 to 100 and two strings 'Y' or 'g' in lowercase.\n";
         return;
     }
 
-
     $parentA->createOffspring($parentB);
 }
 
-// Stores them based on type
+// Stores the chromosomes based on type
 function divideChromosomes($chromosomes, &$colorGenes, &$sweetness)
 {
     foreach ($chromosomes as $arg) {
@@ -93,24 +89,6 @@ function divideChromosomes($chromosomes, &$colorGenes, &$sweetness)
             $sweetness[] = $arg;
         }
     }
-}
-
-// Check if the chromosomes are in the correct format
-function isValidFormat(&$arrayOfyOrG, &$arrayOfNumeric)
-{
-    global $COMPARISON_NUMBER_OF_CHROMOSOMES;
-
-    if (count($arrayOfNumeric) !== $COMPARISON_NUMBER_OF_CHROMOSOMES || count($arrayOfyOrG) !== $COMPARISON_NUMBER_OF_CHROMOSOMES) {
-        return false;
-    }
-
-    foreach ($arrayOfNumeric as $value) {
-        if ($value < 0 || $value > 100) {
-            return false;
-        }
-    }
-
-    return true;
 }
 
 if (count($argv) < 2) {
